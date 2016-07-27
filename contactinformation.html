@@ -1,0 +1,321 @@
+{% extends "servicerequestdatabasetemplate.html" %}
+{% block content %}
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<br><br><br>
+<form method="post" action="">
+
+<div class="ownermaindiv">
+	
+	<div class="ownernameandcompany">
+		Owner's Name &amp; Company&nbsp;&nbsp;<input type="text" id="OwnersName" name="OwnersName" size="132" value="{{session.OwnersName}}">
+	</div>
+	
+	<div class="owneremail">
+		Owner's E-mail&nbsp;&nbsp;<input type="email" id="OwnersEmail" name="OwnersEmail" size="132" value="{{session.OwnersEmail}}">
+	</div>
+	
+	<div class="owneraddress">
+		Owner's Address&nbsp;&nbsp;<input type="text" id="OwnersAddress" name="OwnersAddress" size="132" value="{{session.OwnersAddress}}">
+	</div>
+
+	<div class="owner">
+		<table class="ownermenurotate">
+			<tr>
+				<td>Owner</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="ownercolor"></div>
+	
+</div>
+	
+<div class="ownerrepmaindiv">
+
+	<div class="repname">
+		Owner's Representative &nbsp;&nbsp;<input type="text" id="OwnersRepresentativeName" name="OwnersRepresentativeName" size="132" value="{{session.OwnersRepresentativeName}}">
+		<br>Name &amp; Company
+	</div>
+	
+	<div class="repemail">
+		Owner's Representative&nbsp;&nbsp;<input type="text" id="OwnersRepresentativeEmail" name="OwnersRepresentativeEmail" size="132" value="{{session.OwnersRepresentativeEmail}}">
+		<br>E-mail
+	</div>
+	
+	<div class="repaddress">
+		Owner's Representative&nbsp;&nbsp;<input type="text" id="OwnersRepresentativeAddress" name="OwnersRepresentativeAddress" size="132" value="{{session.OwnersRepresentativeAddress}}">
+		<br>Address
+	</div>
+	
+	<div class="rep">
+		<table class="repmenurotate">
+			<tr>
+				<td>Owner's Representative</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="repcolor"></div>
+	
+</div>
+	
+<div class="eormaindiv">
+	
+	<div class="eorname">
+		EOR/Architect Name&nbsp;&nbsp;<input type="text" id="EORArchitectsName" name="EORArchitectsName" size="132" value="{{session.EORArchitectsName}}">
+		<br> &amp; Company
+	</div>
+
+	<div class="eoremail">
+		EOR/Architect E-mail&nbsp;&nbsp;<input type="text" id="EORArchitectsEmail" name="EORArchitectsEmail" size="132" value="{{session.EORArchitectsEmail}}">
+	</div>
+	
+	<div class="eoraddr">
+		EOR/Architect Address&nbsp;&nbsp;<input type="text" id="EOR/ArchitectAddress" name="EOR/ArchitectAddress" size="132" value="{{session.EORArchitectAddress}}">
+	</div>
+	
+	<div class="eor">
+		<table class="eormenurotate">
+			<tr>
+				<td>EOR/Architect</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="eorcolor"></div>
+	
+</div>
+	
+<div class="conmaindiv">
+
+	<div class="conname">
+		Contractor Name &amp; Company&nbsp;&nbsp;<input type="text" id="ContractorsName" name="ContractorsName" size="132" value="{{session.ContractorsName}}">
+	</div>
+	
+	<div class="conemail">
+		Contractor E-mail&nbsp;&nbsp;<input type="text" id="ContractorsEmail" name="ContractorsEmail" size="132" value="{{session.ContractorsEmail}}">
+	</div>
+	
+	<div class="conaddr">
+		Contractor Address&nbsp;&nbsp;<input type="text" id="ContractorsAddress" name="ContractorsAddress" size="132" value="{{session.ContractorsAddress}}">
+	</div>	
+	
+	<div class="con">
+		<table class="conmenurotate">
+			<tr>
+				<td>Contractor</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="concolor"></div>
+	
+</div>
+
+<div class="emailmaindiv">
+		
+	<script>
+		
+		// Forces only one checkbox to be selected at a time by calling the function on click
+		function selectOne(remove)
+		{						
+			document.getElementById(remove).checked = false;
+			if( document.getElementById("emailowner").checked == true &&
+			    document.getElementById("emailrep").checked == true &&
+				document.getElementById("emaileor").checked == true &&
+				document.getElementById("emailcon").checked == true )
+			{
+				document.getElementById("emailall").checked = true;
+			}
+			else
+			{
+				document.getElementById("emailall").checked = false;
+			}
+				
+				
+			if( document.getElementById("ccowner").checked == true &&
+			    document.getElementById("ccrep").checked == true &&
+				document.getElementById("cceor").checked == true &&
+				document.getElementById("cccon").checked == true )
+			{
+				document.getElementById("ccall").checked = true;
+			}
+			else
+			{
+				document.getElementById("ccall").checked = false;
+			}
+		}
+		
+		// Selects to either email or cc everyone
+		function emailAll()
+		{
+			document.getElementById("ccall").checked = false;
+			
+			document.getElementById("emailowner").checked = true;
+			document.getElementById("emailrep").checked = true;
+			document.getElementById("emaileor").checked = true;
+			document.getElementById("emailcon").checked = true;
+			
+			document.getElementById("ccowner").checked = false;
+			document.getElementById("ccrep").checked = false;
+			document.getElementById("cceor").checked = false;
+			document.getElementById("cccon").checked = false;
+		}
+		
+		function ccAll()
+		{
+			document.getElementById("emailall").checked = false;
+		
+			document.getElementById("emailowner").checked = false;
+			document.getElementById("emailrep").checked = false;
+			document.getElementById("emaileor").checked = false;
+			document.getElementById("emailcon").checked = false;
+			
+			document.getElementById("ccowner").checked = true;
+			document.getElementById("ccrep").checked = true;
+			document.getElementById("cceor").checked = true;
+			document.getElementById("cccon").checked = true;
+		}
+		
+		function email()
+		{
+			//window.alert("This has not yet been programmed");
+			
+			//window.alert($('#emailowner').is(":checked"));
+			
+			// Get Service Request Number
+			var serviceRequestNumber = $('#SRN').val();
+
+			// Get Project Name
+			var projectName = $('#PN').val();
+			
+			// Owner's Email
+			var owner = $('#OwnersEmail').val();
+			
+			// Owner Representative's Email
+			var ownrep = $('#OwnersRepresentativeEmail').val();
+			
+			// EOR/Architect's Email
+			var eor = $('#EORArchitectsEmail').val();
+			
+			// Contractor's Email
+			var contractor = $('#ContractorsEmail').val();
+			
+			// Get list of people to email
+			var email = "";
+			
+			if( $('#emailowner:checked').is(':checked') )
+			{
+				email = owner + "; ";
+			}
+			
+			if( $('#emailrep:checked').is(':checked') )
+			{
+				email = email + ownrep + "; ";
+			}
+			
+			if( $('#emaileor:checked').is(':checked') )
+			{
+				email = email + eor + "; ";
+			}
+			
+			if( $('#emailcon:checked').is(':checked') )
+			{
+				email = email + contractor + "; ";
+			}
+			
+			// Get list of people to cc
+			var cc = "";
+			
+			if( $('#ccowner:checked').is(':checked') )
+			{
+				cc = owner + "; ";
+			}
+			
+			if( $('#ccrep:checked').is(':checked') )
+			{
+				cc = cc + ownrep + "; ";
+			}
+			
+			if( $('#cceor:checked').is(':checked') )
+			{
+				cc = cc + eor + "; ";
+			}
+			
+			if( $('#cccon:checked').is(':checked') )
+			{
+				cc = cc + contractor + "; ";
+			}
+			
+			if( email )
+			{
+				// Get list of people to cc 
+				
+				// Subject for the email ***UTL Permit is missing from database***
+				var subject = "Service Request " + serviceRequestNumber + ", " + projectName;
+				
+				// Fill in when the body of the email is filled in 
+				var emailBody = "";
+				window.location = 'mailto:' + email + "?cc=" + cc + '&subject=' + subject + '&body=' + emailBody;
+			}
+			else
+			{
+				window.alert("Someone must be selected before sending the email");
+			}
+		}
+		
+	</script>
+	
+	<div class="toandcc">
+		<B>TO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CC:</B>
+	</div>
+	
+	
+	<div class="sendowner">
+		Owner&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="eowner" id="emailowner" onclick="selectOne('ccowner')">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="cowner" id="ccowner"  onclick="selectOne('emailowner')">
+	</div>
+	
+	<div class="sendrep">
+		Owner's Representative&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="emailrep" onclick="selectOne('ccrep')">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="ccrep" onclick="selectOne('emailrep')">
+	</div>
+	
+	<div class="sendeor">
+		EOR / Architect&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="emaileor" onclick="selectOne('cceor')">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="cceor"  onclick="selectOne('emaileor')">
+	</div>
+	
+	<div class="sendcon">
+		Contractor&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"  id="emailcon" onclick="selectOne('cccon')">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="cccon" onclick="selectOne('emailcon')">
+	</div>
+	
+	<div class="sendall">
+		Select All&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="emailall" onclick="emailAll()">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="ccall" onclick="ccAll()">
+	</div>
+	
+	<div class="emailbtn">
+		<input class="normalbtn" type="button" id="emailbtn" onclick="email()" value="E-mail">
+	</div>
+	
+	<div class="saveci">
+		<input class="savebtn" type="submit" id="saveContactInfo" name="saveContactInfo" value="Save and Continue">
+	</div>
+	
+	<div class="email">
+		<table class="emailmenurotate">
+			<tr>
+				<td>E-mail</td>
+			</tr>
+		</table>
+	</div>	
+	
+	<div class="emailcolor"></div>
+	<br><br>
+</div>
+</form>
+{% endblock %}

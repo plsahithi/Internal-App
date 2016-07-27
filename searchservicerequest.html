@@ -1,0 +1,133 @@
+{% extends "searchprojectsdatabasetemplate.html" %}
+{% block content %}
+		
+	<br><br><br>
+	<form method="post" action="">
+
+		<div class="searchprojectsmaindiv">
+			
+			<div class="searchprojectssrn">
+				Service Request Number&nbsp;&nbsp;<input type="t" size="20" id="SRN" name="ServiceRequestNumber" value="{{request.form.ServiceRequestNumber}}">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				PD UTL Permit #&nbsp;&nbsp;<input type="text" size="20" name="PDUTLPermit" value="{{request.form.PDUTLPermit}}">
+			</div>
+
+			<div class="searchprojectprojectname">
+				Project Name&nbsp;&nbsp;<input type="text" size="20" name="ProjectName" value="{{request.form.ProjectName}}">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				PD Building Permit #&nbsp;&nbsp;<input type="text" size="20" name="PDBuildingPermit" value="{{request.form.PDBuildingPermit}}">
+			</div>
+
+			<div class="searchprojectprojectlocation">
+				Project Location&nbsp;&nbsp;<input type="text" size="20" name="ProjectLocation" value="{{request.form.ProjectLocation}}">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Owner's Name&nbsp;&nbsp;<input type="text" size="20" name="OwnersName" value="{{request.form.OwnersName}}">
+			</div>
+
+			<div class="searchprojectfolionumber">
+				Folio Number&nbsp;&nbsp;<input type="text" size="20" name="FolioNumber" value="{{request.form.FolioNumber}}">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;Engineer of Record&nbsp;&nbsp;<input type="text" size="20" name="EOR" value="{{request.form.EOR}}">
+			</div>
+
+			<div class="searchprojectatlaspage">
+				Atlas Page&nbsp;&nbsp;<select class="atlasddl" name="AtlasPage" value="{{request.form.AtlasPage}}">
+					<option hidden selected value="{{request.form.AtlasPage}}">{{request.form.AtlasPage}}</option>
+					<option value></option>
+					{% for post in Atlas %}
+						<option value="{{post[0]}}">{{post[0]}}</option>
+					{% endfor %}
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;Project Manager&nbsp;&nbsp;<select class="atlasddl" name ="ProjectManager" value="{{request.form.ProjectManager}}">
+						<!-- Sets Select a Manager as the default and cannot be changed back after a manager is selected -->
+						<option hidden selected value="{{request.form.ProjectManager}}">{{request.form.ProjectManager}}</option>
+						<option value></option>
+						{% for post in Manager %}
+							<option value="{{post[0]}}">{{post[0]}}</option>
+						{% endfor %}
+					</select>
+			</div>
+
+			<div class="searchservreq">
+				<table class="searchservreqrotate">
+					<tr>
+						<td>Search Service Request</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="searchprojectsubdivision">
+				Subdivision&nbsp;&nbsp;<input type="text" size="20" name="Subdivision" value="{{request.form.Subdivision}}">
+			</div>
+
+			<div class="searchprojectprojectstatus">
+				Project Status&nbsp;&nbsp;<select class="atlasddl" name="ProjectStatus" value="{{request.form.ProjectStatus}}">
+					<option hidden selected value="{{request.form.ProjectStatus}}">{{request.form.ProjectStatus}}</option>
+					<option value></option>
+					<option value="overall">Overall</option>
+					<option value="milestones">Milestones</option>
+				</select>
+			</div>
+
+			<div class="searchprojectbetweendates">
+				Between Dates&nbsp;&nbsp;<input type="date" size="20"name="DateL" value="{{request.form.DateL}}">
+				&nbsp;&nbsp;&amp;&nbsp;&nbsp; <input type="date" size="20" name="DateH" value="{{request.form.DateH}}">
+			</div>
+
+			<div>
+				<button class="searchprojectsbutton" id="search">Search</button>
+			</div>
+			
+			<div class="searchprojectsmenucolordiv"></div>
+
+		</div>
+		
+		<!-- Creates table after the search button is selected-->
+		
+		<br><br>
+		{% if DISPLAY %}
+		<div class="searchprojectstablediv">
+			<div class="searchtablescroll">
+				 <table class="table">
+					<thead>
+						<tr>
+							<th><button class = "hovering" type = "submit" value = "0" name = "sr" style = "background:none;border:none;"><b>SR</b>#</button></th>
+							<th><button class = "hovering" type = "submit" value = "5" name = "pn" style = "background:none;border:none;"><b>Project Name</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "7" name = "pl" style = "background:none;border:none;"><b>Project Location</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "9" name = "folio" style = "background:none;border:none;"><b>Folio#</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "8" name = "atl" style = "background:none;border:none;"><b>Atlas Page</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "2" name = "pdp" style = "background:none;border:none;"><b>PD Project #</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "31" name = "own" style = "background:none;border:none;"><b>Owner's Name</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "38" name = "engofrec" style = "background:none;border:none;"><b>Engineer of Record</b></button></th>
+							<th><button class = "hovering" type = "submit" value = "4" name = "pm" style = "background:none;border:none;"><b>Project Manager</b></button></th>						
+						</tr>
+					</thead>
+					</form>
+					<form action="" method="post">
+					<tbody >
+					
+			{%for t in Temprow %}
+			<tr>
+				<td><input type="submit" value="{{t[0]}}{{t[1]}}" name="tablevalue"></td>
+				<td>{{t[2]}}</td>
+				<td>{{t[3]}}</td>
+				<td>{{t[4]}}</td>
+				<td>{{t[5]}}</td>
+				<td>{{t[6]}}</td>
+				<td>{{t[7]}}</td>
+				<td>{{t[8]}}</td>
+				<td>{{t[9]}}</td>
+			</tr>
+			{%endfor%}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{% endif %}
+	</form>
+
+{% endblock %}

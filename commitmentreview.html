@@ -1,0 +1,294 @@
+{% extends "servicerequestdatabasetemplate.html" %}
+{% block content %}
+
+<br><br><br>
+<form method="post" action="">
+	<div class="commitmentreviewmaindiv">
+		
+		<div class="commit">
+			<table class="commitmenurotate">
+				<tr>
+					<td>Commitment Review</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="ProjDesc">
+		<div class="ProjDescDiv">Project Description</div>
+			<textarea rows="5" cols="108" id="ProjectDescription" name="ProjectDescription" value="{{session.ProjectDescription}}"></textarea>
+		</div>
+		
+		<div class="wwservice">
+			Wastewater service can be provided by&nbsp;&nbsp;<input type="text" size="106" id="WasteWaterServiceProvidedBy" name="WasteWaterServiceProvidedBy" value="{{session.WasteWaterServiceProvidedBy}}">
+		</div>
+		
+		<div class="indiby">
+			...as indicated by&nbsp;&nbsp;<input type="text" size="106" id="AsIndicatedBy" name="AsIndicatedBy" value="{{session.AsIndicatedBy}}">
+		</div>
+		<div class="cmr">
+			Committed Flow Rate&nbsp;&nbsp;<input type="text" size="25" id="CommitedFlowRate" name="CommitedFlowRate" value="{{session.CommitedFlowRate}}">&nbsp;&nbsp;&nbsp;&nbsp; GPD
+		</div>
+
+		<div class="commitbuttons">
+			<table class="commitbutton">
+				<tr>
+					<td>
+						<input class="biggerbtn" type="submit" value="Select / Update&#10;Commitment&#10;Conditions" name="selupconditions" id="selupconditions">
+					</td>
+					<td>
+						<input class="biggerbtn" type="submit" value="Create / View&#10;Draft&#10;Commitment" name="cvdraftcommitment" id="cvdraftcommitment">
+					</td>
+					<td>
+						<input class="biggerbtn" type="button" value="Request&#10;Supervisor&#10;Review" id="reqsupervisorreview">
+					</td>
+					<td>
+						<input class="biggerbtn" type="button" value="Sign &amp; Finalize&#10;Commitment" id="signandfinalize">
+					</td>
+					<td>
+						<input class="biggerbtn" type="button" value="E-mail&#10;Commitment" id="emailcommitment">
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+	<div class="commitcolor"></div>
+		
+	</div>
+	
+	<div class="srmaindiv">
+	
+		<div class="sr">
+			<table class="srmenurotate">
+				<tr>
+					<td>Status Request</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div class="cvdraftstatusbuttons">
+			<table class="cvdrafttable">
+				<tr>
+					<td><input class="draftstatusbutton" type="button" name="draftstatusactive" id="draftstatusactive" value="Create / View Draft Status Request - Commitment&#10Active"></td>
+				</tr>
+				<tr>
+					<td><input class="draftstatusbutton" type="button" name="draftstatusexpired" id="draftstatusexpired" value="Create / View Draft Status Request - Commitment&#10Expired"></td>
+				<tr>
+			</table>
+		</div>
+		
+		<div class="srbuttons">
+			<table class="srtable">
+				<tr>
+					<td><input class="srbutton" type="button" name="signandfinalizestatus" id="signandfinalizestatus" value="Sign and Finalize Status Request"></td>
+					<td><input class="srbutton" type="button" name="requestsupervisorsr" id="requestsupervisorsr" value="Request Supervisor Review"></td>
+					<td><input class="srbutton" type="button" name="emailsr" id="emailsr" value="E-mail Status Request"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="srcolor"></div>
+		
+	</div>
+	
+	<div class="comtextmaindiv">
+		
+		<div class="reqnameandcomp">
+			Requestor Name &amp; Company&nbsp;&nbsp;<input type="text" name="requestnameandcompany" id="requestnameandcompany" size="20" value="{{session.requestnameandcompany}}" style="width:170px;">
+		</div>
+		
+		<div class="sameastext">
+			Same As&nbsp;&nbsp;<input type="text" name="sameas" id="sameas" value="{{session.sameas}}" size="20">
+		</div>
+		
+		<div class="comtextbuttons">
+		<table class="comtexttable">
+			<tr>
+				<td><input class="comtbutton" type="button" name="cvdraftextensioncomt" id="cvdraftextensioncomt" value="Create /&#10;View Draft&#10;Extension"></td>
+				<td><input class="comtbutton" type="button" name="signandfinalizecomt" id="signandfinalizecomt" value="Sign &amp;&#10;Finalize"></td>
+				<td><input class="comtbutton" type="button" name="requestsupervisorreviewcomt" id="requestsupervisorreviewcomt" value="Request&#10;Supervisor&#10;Review"></td>
+				<td><input class="comtbutton" type="button" name="emailcomt" id="emailcomt" value="E-mail&#10;Extension"></td>
+			</tr>
+		</table>
+	</div>
+		
+		<div class="dor">
+			Date of Request&nbsp;&nbsp;<input type="date" name="dateofrequest" id="dateofrequest" value="{{session.dateofrequest}}" style="width:170px;">
+		</div>
+	
+	<div class="comtext">
+			<table class="comtextmenurotate">
+				<tr>
+					<td>Comt Extension</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="comtextcolor"></div>
+	
+	</div>
+	
+	<div class="cancellationmaindiv">
+	
+		<div class="cancellationbuttons">
+			<table class="cancellationtable">
+				<tr>
+					<td><input class="cancellationbutton" type="button" name="cvdraftcommitmentcancel" id="cvdraftcommitmentcancel" value="Create / View Draft&#10;Commitment"></td>
+					<td><input class="cancellationbutton" type="button" name="signandfinalizecancel" id="signandfinalizecancel" value="Sign &amp; Finalize&#10;Commitment"></td>
+					<td><input class="cancellationbutton" type="button" name="reqsupervisorcancel" id="reqsupervisorcancel" value="Request&#10;Supervisor&#10;Review"></td>
+					<td><input class="cancellationbutton" type="button" name="emailcancel" id="emailcancel" value="E-mail Commitment"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="cancel">
+			<table class="cancelmenurotate">
+				<tr>
+					<td>Cancellation</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="cancelcolor"></div>
+		
+	</div>
+	
+	<div class="maintenenceyardmaindiv">
+		
+		<div class="mainandwork">
+			<table class="mainandworkmenurotate">
+				<tr>
+					<td align="center">Maintenance Yard Work Orders</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="mainandworktablediv">
+			<table class="mainandworktable">
+				<tr>
+					<td></td>
+					<td></td>
+					<td align="center">Date Initiated</td>
+					<td align="center">Date Completed</td>
+				</tr>
+				<tr>
+					<td>Mark and Locate</td>
+					<td><input class="mainandworktableemail" type="button" name="markandlocateemail" id="markandlocateemail" value="E-mail"></td>
+					<td align="center"><input type="date" name="markandlocateinitdate" id="markandlocateinitdate"></td>
+					<td align="center"><input type="date" name="markandlocatecompdate" id="markandlocatecompdate"></td>
+				</tr>
+				<tr>
+					<td>Construction Cost</td>
+					<td><input class="mainandworktableemail" type="button" name="constructioncostemail" id="constructioncostemail" value="E-mail"></td>
+					<td align="center"><input type="date" name="constructioncostinitdate" id="constructioncostinitdate"></td>
+					<td align="center"><input type="date" name="constructioncostcompdate" id="constructioncostcompdate"></td>
+					<td>Cost&nbsp;&nbsp;<input type="text" name="constructioncost" id="constructioncost"></td>
+				</tr>
+				<tr>
+					<td>Survey</td>
+					<td><input class="mainandworktableemail" type="button" name="surveyemail" id="surveyemail" value="E-mail"></td>
+					<td align="center"><input type="date" name="surveyinitdate" id="surveyinitdate"></td>
+					<td align="center"><input type="date" name="surveycompdate" id="surveycompdate"></td>
+				</tr>
+				<tr>
+					<td>Installation</td>
+					<td><input class="mainandworktableemail" type="button" name="installationemail" id="installationemail" value="E-mail"></td>
+					<td align="center"><input type="date" name="installationinitdate" id="installationinitdate"></td>
+					<td align="center"><input type="date" name="installationcompdate" id="installationcompdate"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="mainandworkcolor"></div>
+		
+	</div>
+	
+	<div class="lineextensionmaindiv">
+	
+		<div class="lineextension">
+			<table class="lineextensionmenurotate">
+				<tr>
+					<td>Line Extension</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div class="lineextensiontablediv">
+			<table class="lineextensiontable">
+
+				<tr>
+					<td></td>
+					<td></td>
+					<td align="center">Date Initiated</td>
+					<td align="center">Date Completed</td>
+				</tr>
+				<tr>
+					<td>Utility Notification</td>
+					<td><input class="utilitybutton" type="button" name="cityutility" id="cityutility" value="City Limits">
+							<input class="utilitybutton" type="button" name="countyutility" id="countyutility" value="County Limits"</td>
+					<td align="center"><input type="date" name="utilityinitdate" id="utilityinitdate" style="width:170px;"></td>
+				</tr>
+				<tr>
+					<td>Contractor Meeting/Construction Cost</td>
+					<td><input class="lineextensionbutton" type="button" id="contractorrequestmeeting" name="contractorrequestmeeting" value="Request Meeting"></td>
+					<td align="center"><input type="date" name="contractormeetinginitdate" id="contractormeetinginitdate" style="width:170px;"></td>
+					<td align="center"><input type="date" name="contractormeetingcompdate" id="contractormeetingcompdate" style="width:170px;"></td>
+					<td>Cost&nbsp;&nbsp;<input type="text" name="contractorcost" id="contractorcost" style="width:170px;"></td>
+				</tr>
+				<tr>
+					<td>Survey</td>
+					<td><input class="lineextensionbutton" type="button" name="ordersurvey" id="ordersurvey" value="Order Survey"></td>
+					<td align="center"><input type="date" name="surveyinitdate" id="surveyinitdate" style="width:170px;"></td>
+					<td align="center"><input type="date" name="surveycompdate" id="surveycompdate" style="width:170px;"></td>
+				</tr>
+				<tr>
+					<td>Design / Drafting</td>
+					<td class="tdbutton"><input class="lineextensionbutton" type="button" name="designrequest" id="designrequest" value="Request Drafter"></td>
+					<td align="center"><input type="date" name="designinitdate" id="designinitdate" style="width:170px;"></td>
+					<td align="center"><input type="date" name="designcompdate" id="designcompdate"style="width:170px;"></td>
+					<td>Drafter&nbsp;&nbsp;<select class="atlasddl" id="Drafter" name="Drafter" style="width:175px;">
+					<!--***************************************************************-->
+						<!--<option value disabled hidden selected> -- Select a Drafter -- </option>
+						{% for post in Draft %}
+							<option value="{{post[0]}}">{{post[0]}}</option>
+						{% endfor %} -->
+						<option hidden selected value="{{session.Drafter}}">{{session.Drafter}}</option>
+						<option value="Drafter1">Drafter 1</option>
+						<option value="Drafter2">Drafter 2</option>
+						<option value="Drafter3">Drafter 3</option>
+						<option value="Drafter4">Drafter 4</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td align="right">Work Order Number</td>
+					<td align="center"><input type="text" name="workordernumber" id="workordernumber" style="width:170px;"></td>
+					<td align="center">Annual Contract Number</td>
+					<td align="right"><input type="text" name="annualcontractno" id="annualcontractno" style="width:170px;"></td>
+				</tr>
+				<tr>
+					<td>Work Order</td>
+					<td><input class="lineextensionbutton" type="button" name="issueworkorder" id="issueworkorder" value="Issue Work Order"></td>
+					<td align="center"><input type="date" name="workorderinitdate" id="workorderinitdate" style="width:170px;"></td>
+				</tr>
+				<tr>
+					<td>Line Extension As Builts Received</td>
+					<td><input class="lineextensionbutton" type="button" name="emailasbuilts" id="emailasbuilts" value="Email As Builts"></td>
+					<td align="center"><input type="date" name="asbuiltsinitdate" id="asbuiltsinitdate" style="width:170px;"></td>
+				</tr>
+				
+			</table>
+		</div>
+	
+		<div class="lineextensioncolor"></div>
+		
+		<div class="savecommitmentbutton">
+			<input class="savebtn" type="submit" name="savecommitment" id="savecommitment" value="Save and Continue">
+			<br><br><br><br><br><br>
+		</div>
+		
+	</div>
+	
+</form>
+
+{% endblock %}

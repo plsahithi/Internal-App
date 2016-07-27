@@ -1,0 +1,615 @@
+{% extends "servicerequestdatabasetemplatenodates.html" %}
+{% block content %}
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<br><br><br>
+<form method="post" action="">
+
+	<div class="commitmentbtns">
+		
+		<script>
+		// Forces only one checkbox to be selected at a time by calling the function on click
+		function selectOne(remove)
+		{						
+			document.getElementById(remove).checked = false;
+		}
+		
+		</script>
+		
+		<label>
+				<input class="commitcheck" type="checkbox" name="commitoriginal" id="commitoriginal" onclick="selectOne('commitrevised')">&nbsp;&nbsp;Commitment Letter (Original) - Conditions
+		</label>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<label>
+				<input class="commitcheck" type="checkbox" name="commitrevised" id="commitrevised" onclick="selectOne('commitoriginal')">&nbsp;&nbsp;Commitment Letter (Revised) - Conditions
+		</label>
+		
+		<div class="commitmentbtnscolor"></div>
+		
+	</div>
+	
+	<div class="conditionsmaindiv" id="conditions" style="display:none">
+	
+		<div class="conditionscolor" id="condcolor"></div>
+	
+		<div class="conditionslabeldiv" id="labels" style="display:none">
+			
+			<label>
+				<input class="origcond" type="checkbox" id="hillsbcountylimitsorig" value="01" name="condition" {%if '01' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;HILLSBOROUGH COUNTY LIMITS
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="rowcotorig" value="02" name="condition" {%if '02' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;RIGHT-OF-WAY PERMIT - CITY OF TAMPA
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="rowhillsborig" name="rowhillsborig" value="03" name="condition" {%if '03' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;RIGHT-OF-WAY PERMIT - HILLSBOROUGH COUNTY
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="rowfdotorig" name="rowfdotorig" value="04" name="condition" {%if '04' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;RIGHT-OF-WAY PERMIT - FLORIDA DEPARTMENT OF TRANSPORTATION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="epcapprovalliftorig" name="epcapprovalliftorig" value="05" name="condition" {%if '05' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;EPC APPROVAL (LIFT STATION OR RIGHT-OF-WAY WORK)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="epcapprovalminorig" name="epcapprovalminorig" value="06" name="condition" {%if '06' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;EPC APPROVAL (MINIMAL ON-SITE WORK ONLY)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="onsiteorig" name="onsiteorig" value="07" name="condition" {%if '07' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;ON-SITE OWNERSHIP
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="designcollectorig" name="designcollectorig" value="08" name="condition" {%if '08' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DESIGN OF COLLECTION SYSTEM OWNER'S RESPONSIBILITY
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="designroworig" name="designroworig" value="09" name="condition" {%if '09' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DESIGN IN RIGHT-OF-WAY IN ACCORDANCES TO W.W. STANDARDS
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="designppsorig" name="designppsorig" value="10" name="condition" {%if '10' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DESIGN OF PUBLIC PUMP STATION IN ACCORDANCES TO W.W. STANDARDS
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="designfeeorig" name="designfeeorig" value="11" name="condition" {%if '11' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DESIGN REVIEW FEE
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="newwweaseorig" value="12" name="condition" {%if '12' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;NEW WASTEWATER EASEMENT TO BE GRANTED TO WASTEWATER DEPARTMENT
+				<br>
+			</label>
+			
+				<div class="origcondexp" id="wwmindidth" name="wwmindidth" style="display:none">
+					Minimum Width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" size="15" id="minimumwidth" name="minimumwidth">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feet	
+				</div>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="manholelidorig" value="13" name="condition" {%if '13' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;MANHOLE LID - PRIVATE MANHOLES
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="pressurecondorig" value="14" name="condition" {%if '14' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;PRESSURE CONDITIONS
+				<br>
+			</label>
+			
+				<div class="origcondexp" id="flowrateandhead" value="11" name="condition" style="display:none">
+					<table class="pressuretableorig">
+						
+						<tr>
+							<td align="right">Maximum Flow Rate</td>
+							<td><input type="text" size="15" id="maxflowrate" name="maxflowrate"></td>
+							<td aligh="left">Gallons per Minute</td>
+						</tr>
+						
+						<tr>
+							<td align="right">Maximum Total Dynamic Head</td>
+							<td><input type="text" size="15" id="maxtdh" name="maxtdh"></td>
+							<td align="left">Feet</td>
+						</tr>
+						
+						<tr>
+							<td align="right">Minimum Total Dynamic Head</td>
+							<td><input type="text" size="15" id="mintdh" name="mintdh"></td>
+							<td align="left">Feet</td>
+						</tr>
+					</table>
+				</div>
+				
+			<label>
+				<input class="origcond" type="checkbox" id="hottaporig" value="15" name="condition" {%if '15' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;HOT TAP CONNECTION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="greasepretreatorig" value="16" name="condition" {%if '16' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;GREASE TRAP PRE-TREATMENT
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="oilseparateorig" value="17" name="condition" {%if '17' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;OIL / WATER SEPARATOR
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="ptraporig" value="18" name="condition" {%if '18' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;P-TRAP / COLLECTION SYSTEM ODOR PROBLEM
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="indwasteorig" value="19" name="condition" {%if '19' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;INDUSTRIAL WASTE PRE-TREATMENT
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="spuserorig" value="20" name="condition" {%if '20' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;SPECIAL USER SUR-CHARGES
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="dewaterpfrorig" value="21" name="condition" {%if '21' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DEWATERING - PEAK FLOW RATE
+				<br>
+			</label>
+			
+				<div class="origcondexp" id="dewaterpeakflowrate" name="dewaterpeakflowrate" style="display:none">
+					Peak Flow Rate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" id="dewaterrpf" name="dewaterrpf">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GPD
+				</div>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="dewaterconnectorig" value="22" name="condition" {%if '22' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DEWATERING - CONNECTION VIA SANITARY MANHOLE
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="dewaternoreqorig" value="23" name="condition" {%if '23' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DEWATERING - NO REQUIRED PRE-TREATMENT
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="dewatermeterorig" value="24" name="condition" {%if '24' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DEWATERING - METER
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="dewaterdischarorig" value="25" name="condition" {%if '25' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;DEWATERING - PRE-DISCHARGE INSPECTION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="metersanitaryorig" value="26" name="condition" {%if '26' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;METER(S) - SANITARY DISCHARGE
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="unmeteredorig" value="27" name="condition" {%if '27' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;UNMETERED WATER
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="metercoolingorig" value="28" name="condition" {%if '28' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;METER(S) - COOLING TOWER
+				<br>
+			</label>
+			
+			<!--************************************************************************************************
+			***	Fill in drop down list when database is complete																								***
+				 ************************************************************************************************-->
+				 
+				<div class="origcondexp" id="coolingtowerdimm" name="coolingtowerdimm" style="display:none">
+					<table class="coolingtowerdimmtable">
+						<tr>
+							<td>
+							<td align="center">Size (IN)</td>
+							<td align="center">Type</td>
+						</tr>
+						
+						<tr>
+							<td align="right">Supply Line</td>
+							<td><input type="text" id="supplysize" name="supplysize"></td>
+							<td><input type="text" id="supplytype" name="supplytype"></td>
+						</tr>
+						
+						<tr>
+							<td align="right">Discharge Line</td>
+							<td><input type="text" id="dischargelinesize" name="dischargelinesize"></td>
+							<td><input type="text" id="dischargelinetype" name="dischargelinetype"></td>
+						</tr>
+						
+						<tr>
+							<td align="right">Overflow Line</td>
+							<td><input type="text" id="overflowlinesize" name="overflowlinesize"></td>
+							<td><input type="text" id="overflowlinetype" name="overflowlinetype"></td>
+						</tr>
+						
+					</table>
+				</div>
+							
+			
+			<label>
+				<input class="origcond" type="checkbox" id="meterirriorig" value="29" name="condition" {%if '29' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;METER(S) - IRRIGATION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="meterprivateorig" value="30" name="condition" {%if '30' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;METER(S) - PRIVATE WELL
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="buildpermitholdorig" value="31" name="condition" {%if '31' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;BUILDING PERMIT HOLD RELEASED (NO FEES DUE)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="capacityinfrasorig" value="32" name="condition" {%if '32' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;CAPACITY FEE (INFRASTRUCTURE ONLY)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="capacitytemporig" value="33" name="condition" {%if '33' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;CAPACITY FEE (TEMPORARY CONNECTION)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="capacityprivwellorig" value="34" name="condition" {%if '34' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;CAPACITY FEE (PRIVATE WELL METER)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="capacitymbdorig" value="35" name="condition" {%if '35' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;CAPACITY FEE (MAY BE DUE)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="aicsurveyorderedorig" value="36" name="condition" {%if '36' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;AID IN CONSTRUCTION - SURVEY ORDERED / COST TO BE DETERMINED
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="aicfinalizedorig" value="37" name="condition" {%if '37' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;AID IN CONSTRUCTION - COST FINALIZED
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="hydrotestingorig" value="38" name="condition" {%if '38' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;HYDROSTATIC TESTING (PASSING PRELIMINARY RESULTS)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="leaktestorig" value="39" name="condition" {%if '39' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;LEAKAGE / PRESSURE TEST
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="transofownorig" value="40" name="condition" {%if '40' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;TRANSFER OF OWNERSHIP
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="jointuseexisting" value="41" name="condition" {%if '41' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;JOINT USE &amp; PRIVATE EASEMENT AGREEMENT (EXISTING PRIVATE COLLECTION SYSTEM)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="privateeasementorig" value="42" name="condition" {%if '42' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;JOINT USE &amp; PRIVATE EASEMENT AGREEMENT (PROPOSED SHARED PRIVATE COLLECTION SYSTEM)
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="commdeveloporig" value="43" name="condition" {%if '43' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;COMMUNITY DEVELOPMENT DISTRICT
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="homeownorig" value="44" name="condition" {%if '44' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;HOME OWNER'S ASSOCIATION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="asbuiltorig" value="45" name="condition" {%if '45' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;AS BUILT REQUIREMENTS
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="subsingleorig" value="46" name="condition" {%if '46' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;SUBDIVISION - SINGLE FAMILY RESIDENCE APPLICATION
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcond" type="checkbox" id="submodelorig" value="47" name="condition" {%if '47' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;SUBDIVISION - MODEL HOMES
+				<br>
+			</label>
+			
+			<label>
+				<input class="origcondlast" type="checkbox" id="subfinalorig" value="48" name="condition" {%if '48' in session.Commitments%}checked{%endif%}>
+				&nbsp;&nbsp;SUBDIVISION - FINAL PLAT
+				<br>
+			</label>
+	
+			<script>
+			
+				// Expands the condition if it is in the database on load
+				window.onload = function()
+				{
+					if( $('#newwweaseorig').prop('checked') == true )
+						{
+							$('#wwmindidth').slideDown(500);
+							$('#condcolor').animate({height: '+=30'}, 500);
+						}
+					
+					if( $('#pressurecondorig').prop('checked') == true )
+						{
+							$('#flowrateandhead').slideDown(500);
+							$('#condcolor').animate({height: '+=80'}, 500);
+						}
+					
+					if( $('#dewaterpfrorig').prop('checked') == true )
+						{
+							$('#dewaterpeakflowrate').slideDown(500);
+							$('#condcolor').animate({height: '+=30'}, 500);
+							$('#condcolor').slideDown(500);
+						}
+				
+					if( $('#metercoolingorig').prop('checked') == true )
+						{
+							$('#coolingtowerdimm').slideDown(500);
+						}
+				}
+				
+				// Expands the conditions section when the box is checked
+				
+				$(document).ready(function()
+				{
+					$('#commitoriginal').change(function()
+					{
+						if( $('#commitoriginal').prop('checked') == false && $('#commitrevised').prop('checked') == false )
+						{
+							$('#conditions').slideToggle(500);
+							$('#labels').slideToggle(500);
+						}
+						else
+						{
+							$('#conditions').slideDown(500);
+							$('#labels').slideDown(500);
+							$('#condcolor').animate(500);
+						}
+					});
+				});
+				
+				$(document).ready(function()
+				{
+					$('#commitrevised').change(function()
+					{
+						if( $('#commitoriginal').prop('checked') == false && $('#commitrevised').prop('checked') == false )
+						{
+							$('#conditions').slideToggle(500);
+							$('#labels').slideToggle(500);
+						}
+						else
+						{
+							$('#conditions').slideDown(500);
+							$('#labels').slideDown(500);
+						}
+					});
+				});
+				
+				$(document).ready(function()
+				{
+					$('#newwweaseorig').change(function()
+					{
+						if( $('#newwweaseorig').prop('checked') == true )
+						{
+							$('#wwmindidth').slideDown(500);
+							$('#condcolor').animate({height: '+=30'}, 500);
+						}
+						else
+						{
+							$('#wwmindidth').slideUp(500);
+							$('#condcolor').animate({height: '-=30'}, 500);
+						}
+					});
+				});
+				
+				$(document).ready(function()
+				{
+					$('#pressurecondorig').change(function()
+					{
+						if( $('#pressurecondorig').prop('checked') == true )
+						{
+							$('#flowrateandhead').slideDown(500);
+							$('#condcolor').animate({height: '+=88'}, 500);
+						}
+						else
+						{
+							$('#flowrateandhead').slideUp(500);
+							$('#condcolor').animate({height: '-=88'}, 500);
+						}
+					});
+				});
+				
+				$(document).ready(function()
+				{
+					$('#dewaterpfrorig').change(function()
+					{
+						//$('#dewaterpeakflowrate').slideToggle(500);
+					
+					
+					if( $('#dewaterpfrorig').prop('checked') == true )
+						{
+							$('#dewaterpeakflowrate').slideDown(500);
+							$('#condcolor').animate({height: '+=30'}, 500);
+						}
+						else
+						{
+							$('#dewaterpeakflowrate').slideUp(500);
+							$('#condcolor').animate({height: '-=30'}, 500);
+						}
+					});
+				});
+				
+				$(document).ready(function()
+				{
+					$('#metercoolingorig').change(function()
+					{
+						if( $('#metercoolingorig').prop('checked') == true )
+						{
+							$('#coolingtowerdimm').slideDown(500);
+							$('#condcolor').animate({height: '+=110'}, 500);
+						}
+						else
+						{
+							$('#coolingtowerdimm').slideUp(500);
+							$('#condcolor').animate({height: '-=110'}, 500);
+						}
+					});
+				});
+			
+			</script>
+			
+		</div>	
+		
+	</div>
+	
+	<!-- 104 columns matches the number of characters that will fit in one line of a word document with 11pt Calibri font which is the standard -->
+	<div class="commitcustommaindiv" id="commitcustommaindiv">
+		{%if mylist %}
+			<div class = "col-sm-5">
+				<br></br>
+				
+		<div class="customconditiontitletextdiv">
+			Custom Commitment Conditions<br>
+		</div>
+				
+		<div class="customconditiontitlediv">
+			<input type="text" size="101" style="font-family: Calibri; font-size: 11pt" name="CustomTitle" placeholder="Enter Custom Commitment Condition Title" value="{{title[0]}}">
+		</div>
+	
+		<div class="customconditionbodydiv">
+			<textarea rows="18" cols="101" style="font-family: Calibri; font-size: 11pt" name="CustomCondition" placeholder="Enter Custom Commitment Condition Body">{{body[0]}}</textarea>
+		</div>
+		
+		<div class="customconditionbtnsdiv">
+			{%for temp in totalrows%}
+				{%if temp == ThisNumber%}
+					<button type="submit" class="customconditionselectbtn" name = "num" value = "{{temp}}">{{temp}}</button>
+				{%else%}
+					<button type="submit" class="customconditionselectbtn" name = "num" value = "{{temp}}">{{temp}}</button>
+				{%endif%}
+			{%endfor%}
+			
+			<button type="submit" class="addcustomconditionselectbtn" name = "num" value = "0">+</button>
+			<br/><br/>
+		</div>
+		
+		<div class = "col-sm-3"></div>
+		
+			<div class = "customconditionsavediv">
+				{%if ThisNumber >= 0%}
+				
+					<button type="submit" class="customconditionsavebtn" name = "num" value = "{{ThisNumber}}">Update</button>
+					<button type="submit" class="customconditionsavebtn" name = "commandDelete" value = "{{ThisNumber}}">Delete</button>
+				
+				{%endif%}
+			</div>
+		
+		</div>
+		
+		{%else%}
+		
+			<div class = "customconditiontitlediv">
+				<label>Custom Condition</label>
+				<input type="text" class = "form-control"  placeholder = "Enter Custom Condition Title" name = "CustomTitle" value = "{{session.CustomTitle}}">
+			</div>
+			
+			<div class = "customconditionbodydiv"></div>
+			<textarea rows="15" cols="50" class = "form-control" placeholder = "Enter Custom Condition Here..."  name = "CustomCondition"></textarea>
+			<div class="col-sm-12 col-xs-12 bottompadding"></div>
+			
+			<br/><br/><br/>	
+			<div class = "col-sm-3"></div>
+			<div class = "col-sm-7">
+				<button type="submit" class="btn btn-default insidepadding2" name = "commandSubmit" value = "{{ThisNumber}}" >Submit</button>
+				
+			</div>
+		
+		{% endif %}
+		
+		<div class="customcondcolor"></div>
+		
+		<div class="conditionsaveandcontinue">
+			<input type="submit" class="savebtn" name="saveconditions" id="saveconditions" value="Save and Continue">
+		</div>
+		
+	</div>
+	
+	</form>
+
+{% endblock %}

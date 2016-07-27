@@ -1,0 +1,39 @@
+{% extends "projectdatabasetemplate.html" %}
+{% block content %}
+		
+	<br><br><br><br><br><br><br><br>
+	<form method="post" action="">
+
+		<div class="srmenumaindiv">
+			
+			<div>
+				<input class="nsrequestbutton" type="submit" name="NewServiceRequest" value="New Service Request">
+			</div>
+
+			<div>
+				<input class="searchsrbutton" type="submit" name="SearchSRNumber" value="Search SR #">
+			</div>
+
+			<div class="srmenu">
+				<table class="srmenurotate">
+					<tr>
+						<td>Service Request Menu</td>
+					</tr>
+				</table>
+			</div>
+
+			<div>
+				<input class="metricsbutton" type="submit" name="Metrics" value="Metrics">
+			</div>
+
+			<div>
+				<input class="acontrolsbutton" type="submit" name="AdminControls" value="Admin Controls">
+			</div>
+
+			<div class="srmenucolordiv"></div>
+
+		</div>
+
+	</form>
+
+{% endblock %}

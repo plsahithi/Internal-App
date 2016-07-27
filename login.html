@@ -1,0 +1,39 @@
+{% extends "projectdatabasetemplate.html" %}
+{% block content %}
+		
+	<br><br><br><br><br><br><br><br>
+	<form method="post" action="">
+
+		<div class="loginmaindiv">
+			
+			<div class="loginusername">
+				Username&nbsp;&nbsp;<input type="text" name="Username">
+			</div>
+
+			<div class="loginpassword">
+				<br>Password &nbsp;&nbsp;<input type="password" name="Password">
+			</div>
+
+			<div class="login">
+				<table class="loginrotate">
+					<tr>
+						<td>User Login</td>
+					</tr>
+				</table>
+			</div>
+
+			<div>
+				<input class="logingobutton" type="submit" value="GO">
+			</div>
+
+			<div class="loginlink">
+				<a href="http://www.tampagov.org" name="RegisterUser">Register as new user</a>
+			</div>
+
+			<div class="logincolordiv"></div>
+
+		</div>
+
+	</form>
+
+{% endblock %}

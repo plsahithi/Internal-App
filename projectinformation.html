@@ -1,0 +1,298 @@
+{% extends "servicerequestdatabasetemplate.html" %}
+{% block content %}
+		
+	<br><br><br>
+	<form method="post" action="">
+
+		<div class="projectinfomaindiv">
+			
+			<div class="pisrn">
+				SR #&nbsp;&nbsp;<input type="text" id="ServiceRequestNumber" name="ServiceRequestNumber" value="{{session.ServiceRequestNumber}}{{session.suffix}}" readonly style= "background-color" size="20">
+			</div>
+
+			<div class="pipn">
+				Project Name&nbsp;&nbsp;<input type="text" name="ProjectName" id="ProjectName" value="{{session.ProjectName}}" style= "background-color" size="20">
+			</div>
+
+			<div class="pibld">
+				BLD / UTL Permit #&nbsp;&nbsp;<input type="text" id="BLDPermit" name="BLDPermit" size="20" value="{{session.BLDPermit}}">
+				<!--***************************************************************-->
+			</div>
+
+			<div class="piaf">
+				Application Fee&nbsp;&nbsp;<select class="atlasddl" id="ApplicationFee" name="ApplicationFee">
+					<option selected hidden value="{{session.ApplicationFee}}">{{session.ApplicationFee}}</option>
+					<option value="$50.00">$50.00</option>
+					<option value="$100.00">$100.00</option>
+					<option value="$250.00">$250.00</option>
+				</select>
+			</div>
+			
+			<div class="pidp">
+			Date Paid&nbsp;&nbsp;<input type="date" id="DatePaid" name="DatePaid" style="width: 169px;">
+			<!--***************************************************************-->
+			</div>
+			
+			<div class="pipps">
+				Proposed Pump Station&nbsp;&nbsp;<select class="atlasddl" id="PumpStation" name="PumpStation">
+					<option hidden selected value="{{session.PumpStation}}">{{session.PumpStation}}</option>
+					<option value="Station1">Station 1</option>
+					<option value="Station2">Station 2</option>
+					<option value="Station3">Station 3</option>
+					<option value="Station4">Station 4</option>
+				</select>
+			</div>
+
+			<div class="piws">
+				Water Source&nbsp;&nbsp;<select class="atlasddl" id="WaterSource" name="WaterSource">
+					<option hidden selected value="{{session.WaterSource}}">{{session.WaterSource}}</option>
+					<option value="Source1">Source 1</option>
+					<option value="Source2">Source 2</option>
+					<option value="Source3">Source 3</option>
+					<option value="Source4">Source 4</option>
+				</select>
+			</div>
+			
+			<div class="piwan">
+				Water Application #&nbsp;&nbsp;<input type="text" size="20" id="WaterApp" name="WaterApp">
+				<!--***************************************************************-->
+			</div>
+
+			<div class="pi">
+				<table class="pimenurotate">
+					<tr>
+						<td>Project Information</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="pipddiv">Project Description</div>
+			<!--***************************************************************-->
+			<div class="pipd" name="ProjectDescription">
+				<textarea rows="5" cols="54"></textarea>
+			</div>
+
+			<div class="pipco">
+				Project Close Out&nbsp;&nbsp;<input type="date" id="ProjectCloseOutDate" name="ProjectCloseOutDate" value="{{session.ProjectCloseOutDate}}" style="width: 168px;">
+			</div>
+
+			<div class="picrmn">
+				CRM Number&nbsp;&nbsp;<input type="text" size="20" id="CRMNum" name="CRMNum">
+				<!--***************************************************************-->
+			</div>
+
+			<div class="picolordiv"></div>
+
+		</div>
+
+		<div class="projectteammaindiv">
+
+			<div class="ptpt">
+				Permit Technician&nbsp;&nbsp;<select class="atlasddl" id="AssignedPermitTech" name="AssignedPermitTech">
+					<option hidden selected value="{{session.AssignedPermitTech}}">{{session.AssignedPermitTech}}</option>
+					{% for post in Tech %}
+						<option value="{{post[0]}}">{{post[0]}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="ptpm">
+				Project Manager&nbsp;&nbsp;<select class="atlasddl" id="ProjectManager" name ="ProjectManager">	
+						<!-- Sets Select a Manager as the default and cannot be changed back after a manager is selected -->
+						<option hidden selected value="{{session.ProjectManager}}">{{session.ProjectManager}}</option>
+						{% for post in Manager %}
+							<option value="{{post[0]}}">{{post[0]}}</option>
+						{% endfor %}
+					</select>
+			</div>
+
+			<div class="pts">
+				Supervisor&nbsp;&nbsp;<select class="atlasddl" name = "Supervisor" id="Supervisor">
+						<option hidden selected value="{{session.Supervisor}}">{{session.Supervisor}}</option>
+						{% for post in Super %}
+							<option value="{{post[0]}}">{{post[0]}}</option>
+						{% endfor %}
+				</select>
+			</div>
+
+			<div class="ptd">
+				Drafter&nbsp;&nbsp;<select class="atlasddl" id="Drafter" name="Drafter">
+				<!--***************************************************************-->
+					<!--<option value disabled hidden selected> -- Select a Drafter -- </option>
+					{% for post in Draft %}
+						<option value="{{post[0]}}">{{post[0]}}</option>
+					{% endfor %} -->
+					<option hidden selected value="{{session.Drafter}}">{{session.Drafter}}</option>
+					<option value="Drafter1">Drafter 1</option>
+					<option value="Drafter2">Drafter 2</option>
+					<option value="Drafter3">Drafter 3</option>
+					<option value="Drafter4">Drafter 4</option>
+				</select>
+			</div>
+			
+			<div class="ASDHidden">
+				<input type="text" hidden id="ApplicationSubmittedDate" name="ApplicationSubmittedDate" value="{{session.ApplicationSubmittedDate}}">
+			</div>
+			
+			<div class="EADHidden">
+				<input type="text" hidden id="EngineerAssignedDate" name="EngineerAssignedDate" value="{{session.EngineerAssignedDate}}">
+			</div>
+			
+			<div class="pt">
+				<table class="ptmenurotate">
+					<tr>
+						<td>Project Team</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="aepm">
+				<input class="aepmbutton" type="submit" id="EmailProjectManager" name="EmailProjectManager" value="Assign &amp; E-mail Project Manager">
+				<script>
+					window.onload = function()
+					{	
+						if( document.getElementById('EngineerAssignedDate').value != '' && document.getElementById('ProjectManager').value != '' && document.getElementById('AssignedPermitTech').value != '')
+						{
+							document.getElementById('ProjectManager').disabled = true;
+							document.getElementById('AssignedPermitTech').disabled = true;
+						}
+					};
+					
+					//var EmailProjectManager = document.getElementId('EmailProjectManager');
+					//********************************************************************
+					// Finish this function once data is being stored correctly
+					//********************************************************************
+					EmailProjectManager.onclick = function()
+					{
+						if( document.getElementById('ProjectManager').value != null && document.getElementById('AssignedPermitTech').value != null && document.getElementById('PermitTech').value != null )
+						{
+							var projectManager = document.getElementById("ProjectManager");
+							var pmstr = projectManager.options[projectManager.selectedIndex].text;
+							
+							var d = new Date();
+							var month = d.getMonth() + 1;
+							var day = d.getDate();
+
+							var output = (('' + month).length < 2 ? '0' : '') + month + 
+								'/' + (('' + day).length < 2 ? '0' : '') + day + 
+								'/' + d.getFullYear();
+							
+							document.getElementById('EngineerAssignedDate').value = output;
+						}
+						else
+						{
+							if( document.getElementById('ProjectManager').value == null )
+							{
+								window.alert("No engineer was selected");
+								document.getElementById('EngineerAssignedDate').value = null;
+							}
+							
+							if( document.getElementById('AssignedPermitTech').value == null )
+							{
+								window.alert("No permit tech was selected");
+								document.getElementById('EngineerAssignedDate').value = null;
+							}
+						}
+					}
+				</script>
+			</div>
+			
+			<div class="ptcolordiv"></div>
+
+		</div>
+		
+		<div class="parcelinfomaindiv">
+			<div class="ProjectAddress">
+				Project Address&nbsp;&nbsp;<input type="text" class="ProjAddr" id="ProjectAddr" name="ProjectAddr" size="20">
+				<!--***************************************************************-->
+			</div>
+			
+			<div class="AtlasPage">
+				Atlas Page&nbsp;&nbsp; <select class="atlasddl" id="AtlasPage" name="AtlasPage">
+					<option hidden selected value="{{session.AtlasPage}}">{{session.AtlasPage}}</option>
+					{% for post in Atlas %}
+						<option value="{{post[0]}}">{{post[0]}}</option>
+					{% endfor %}
+					</select>
+			</div>
+			
+			<div class="FolioNum">
+				Folio #&nbsp;&nbsp;<input type="text" id="FolioNumber" name="FolioNumber" size="20" value="{{session.FolioNumber}}">
+			</div>
+			
+			<div class="Subdivision">
+				Subdivision&nbsp;&nbsp;<input type="text" id="Subdivision" name="Subdivision" size="20">
+				<!--***************************************************************-->
+			</div>
+			
+			<div class="Jurisdiction">
+				Jurisdiction&nbsp;&nbsp;<select class="atlasddl" id="Jurisdiction" name="Jurisdiction">
+				<!--***************************************************************-->
+					<option hidden selected value="{{session.Jurisdiction}}">{{session.Jurisdiction}}</option>
+					<option value="Jurisdiction1">Jurisdiction 1</option>
+					<option value="Jurisdiction2">Jurisdiction 2</option>
+					<option value="Jurisdiction3">Jurisdiction 3</option>
+					<option value="Jurisdiction4">Jurisdiction 4</option>
+					</select>
+			</div>
+			
+			<div class="parc">
+				<table class="parcmenurotate">
+					<tr>
+						<td>Parcel Information</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="parccolordiv"></div>	
+		
+		</div>
+		
+		<div class="projectnotesmaindiv">
+			<div class="Notes">
+			<!--***************************************************************-->
+				<textarea rows="10" cols="135" id="NotesTA" name="NotesTA"></textarea>
+			</div>
+			
+			<div class="pNotes">
+				<table class="pNotesmenurotate">
+					<tr>
+						<td>Project Notes</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="pNotescolordiv"></div>
+		
+		</div>
+		
+		<div class="saveProjectInfo">
+			<input class="savebtn" type="submit" id="saveProjectInfo" name="saveProjectInfo" value="Save and Continue">
+			
+			<script>
+				// When fields are disabled values are not submitted on POST and GET. This function ensures that these
+				// values are uploaded to the database on submit
+				saveProjectInfo.onclick = function()
+				{
+					document.getElementById('ProjectManager').disabled = false;
+					document.getElementById('AssignedPermitTech').disabled = false;
+					
+					if( !document.getElementById('ApplicationSubmittedDate').value )
+					{
+						var d = new Date();
+						var month = d.getMonth() + 1;
+						var day = d.getDate();
+
+						var output = (('' + month).length < 2 ? '0' : '') + month + 
+							'/' + (('' + day).length < 2 ? '0' : '') + day + 
+							'/' + d.getFullYear();
+						
+						document.getElementById('ApplicationSubmittedDate').value = output;
+					}
+				}
+			</script>
+			
+		</div>
+	</form>
+
+{% endblock %}

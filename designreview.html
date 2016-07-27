@@ -1,0 +1,404 @@
+<html lang="en">
+	<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	
+		<meta charset=utf-8>
+
+			<title>Welcome to SR Database</title>
+			<link rel="stylesheet" type="text/css" href="static/css/styles.css">
+				</head>
+				
+	<body class="bodycolor">
+
+		<div class="srdimage">
+
+			<div>
+				<img src="static/img/Header_CityofTampa.png" alt="City of Tampa">
+			</div>
+
+			<div>
+				<h2>Service Request Database</h2>
+			</div>
+
+		</div>
+
+		<form>
+			<div class="srdimage2">
+					<table style="width: 100%;">
+						<tr>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Project Information" id="pitab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Contact Information" id="citab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Commitment Review" id="crtab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Fees" id="feestab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Design Review / Additional Permitting" id="drtab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Inspection / Close Out Requirements" id="insptab">
+							</td>
+							<td width="14.28%;">
+								<input class="projectinfobuttons" type="button" value="Letter Templates" id="lttab">
+							</td>
+						</tr>
+					</table>
+					
+					<script>
+						document.getElementById("pitab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/projectinformation";
+						};
+						
+						document.getElementById("citab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/contactinformation";
+						};
+						
+						document.getElementById("crtab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/commitmentreview";
+						};
+						
+						document.getElementById("feestab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/fees";
+						};
+						
+						document.getElementById("drtab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/designreview";
+						};
+						
+						document.getElementById("insptab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/inspection";
+						};
+						
+						document.getElementById("lttab").onclick = function()
+						{
+							location.href = "http://127.0.0.1:5000/lettertemplates";
+						};
+						
+					</script>
+			</div>
+		</form>
+
+		<br>
+
+		<form>
+			<div class="srdtemplatemaindiv">
+				
+				<div class="srntemplate">
+					SR #&nbsp;&nbsp;<input type="text" size="15" readonly value="061015a">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Project Name&nbsp;&nbsp;<input type="text" size="18" readonly value="">
+				</div>
+
+				<div class="aptemplate">
+					Assigned Permit <br>Tech&nbsp;&nbsp;<input type="text" size="15" readonly value="">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;Project Manager&nbsp;&nbsp;&nbsp;<input type="text" size="18" readonly value="">
+				</div>
+
+				<div class="asdtemplate">
+					Application Submitted Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="eadtemplate">
+					Engineer Assigned Date&nbsp;&nbsp;<input type="text" size="18" value=""readonly>
+				</div>
+
+				<div class="clidtemplate">
+					Commitment Letter Issue Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="cledtemplate">
+					Commitment Letter Extension Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="clexdtemplate">
+					Commitment Letter Expiration Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="ifpdtemplate">
+					Impact Fee Payment Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="dddtemplate">
+					Design Disapproval Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="dexdtemplate">
+					Design Extension Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="dadtemplate">
+					Design Approval Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="abadtemplate">
+					AS-Built Approval Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="pcdtemplate">
+					Project Closeout Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="drfpdtemplate">
+					Design Review Fee Paid Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="adtemplate1">
+					Additional Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="adtemplate2">
+					Additional Date&nbsp;&nbsp;<input type="text" size="18" readonly>
+				</div>
+
+				<div class="adtemplate3">
+					<input type="text" size="18" readonly>
+				</div>
+
+				<div class="adtemplate4">
+					<input type="text" size="18" readonly>
+				</div>
+
+				<div>
+					<input class="osrftemplatebutton" type="submit" value="Open SR Folder">
+				</div>
+
+				<div>
+					<input class="saetemplatebutton" type="submit" value="Save and Exit">
+				</div>
+
+				<div>
+					<input class="savetemplatebutton" type="submit" value="Save">
+				</div>
+
+				<div class="srdtemplatecolordiv"></div>
+
+			</div>
+		</form>
+		
+		<div class="designreview"> 
+		<div class="ptcolordiv1">
+		<table class="designrotate">
+			<tr>
+				<td align="center">
+				Design Review
+				</td>
+			</tr>
+		</table>
+		</div>
+		<form method="post" action="" ></br>
+		
+		<div class="designreviewfee">Design Review Fee&nbsp;&nbsp;&nbsp;
+		
+		<select id="designreviewfee">
+			<option value="50">50</option>
+			<option value="100">100</option>
+			<option value="200">200</option>
+		</select>&nbsp;&nbsp;&nbsp;
+		
+		Design Fee Paid Date &nbsp;&nbsp;&nbsp;<input class="designfeedate" type="date"></br></br>
+		</div>
+		<form>
+		<div class="plansreceived">Plans Received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review Outcome &nbsp;&nbsp;&nbsp;&nbsp; </br>
+			
+			<input type="date"></input>
+			<select>
+				<option value=""></option>
+				<option value="Design Disapp">Design Disapproved </option>
+				<option value="Design App">Design Approved – Off-Site </option>
+				<option value="Design Approved On">Design Approved – On-Site</option>
+			</select>
+			
+				
+				<input type="submit" class="createdraft" value="Create Draft/View Design Review letter" name="CreateDraft"></input>&nbsp;&nbsp;&nbsp;
+						
+				<input type="submit" class="requestsupervisorreview" value="Request Supervisor Review" name="CreateDraft"> </input>&nbsp;&nbsp;
+						
+				<input type="submit" class="signandfinalizereviewletter" name="CreateDraft" value="Sign & Finalize Design Review Letter"></input>&nbsp;&nbsp;
+						
+						
+				<input type="submit" class="emaildesignreview" name="CreateDraft" value="E-mail Design Review"> </input> </br>
+						
+				<input type="button"  id="plusbutton" name="CreateDraft" value="+"></input>
+						
+				
+			
+			
+				<div class="checkclass" style="display:none">Plans Received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review Outcome &nbsp;&nbsp;&nbsp;&nbsp; </br>
+			
+			<input type="date"></input>
+			<select>
+				<option value=""></option>
+				<option value="Design Disapp">Design Disapproved </option>
+				<option value="Design App">Design Approved – Off-Site </option>
+				<option value="Design Approved On">Design Approved – On-Site</option>
+			</select>
+			
+				
+					<input type="submit" class="createdraft" value="Create Draft/View Design Review letter" name="CreateDraft"></input>&nbsp;&nbsp;&nbsp;
+						
+				<input type="submit" class="requestsupervisorreview" value="Request Supervisor Review" name="CreateDraft"> </input>&nbsp;&nbsp;
+						
+				<input type="submit" class="signandfinalizereviewletter" name="CreateDraft" value="Sign & Finalize Design Review Letter"></input>&nbsp;&nbsp;
+						
+				<input type="submit" class="emaildesignreview" name="CreateDraft" value="E-mail Design Review"> </input> </br>
+						
+				<input type="button"  id="plusbutton" name="CreateDraft" value="+"></input>
+						
+			</div>	
+				</form>
+			<script type="text/javascript" src="static/js/date.js"></script>
+			<script type="text/javascript">
+					$(document).ready(function(){
+						$('#plusbutton').click(function(){
+							
+							$('#plusbutton').hide();
+							$('.checkclass').show();
+							$('.designreview').animate({height: '+=30'});
+							$('.designrotate').animate({height: '+=30'});
+							$('.ptcolordiv1').animate({height: '+=30'});
+						});
+					});
+					
+					function dateLoad()
+					{
+				
+					//var date=new Date("07/02/2015");
+					//var mm= date.getMonth();
+					//var dd= date.getDay();
+					//var yyyy=date.getFullYear();
+					//var s=mm+"/"+dd+"/"+yyyy;
+					
+					//var now=new Date();
+					document.getElementById("signeddate").value=(new Date()).format("mm/dd/yyyy");
+					alert("hi");
+					alert((new Date()).toString("mm/dd/yyyy"));
+					//var d=(new Date()).format("mm/dd/yyyy");
+					//alert((new Date()).format("mm/dd/yyyy"));
+						}
+			</script>	
+			
+			</div>
+		
+		</div>
+		
+		<div class="outsideagencypermitting">
+		<div class="ptcolordiv2">
+			<table class="outsiderotate"> 
+				<tr> 
+					<td align="center"> Outside Agency Permitting </td>
+				</tr>
+			</table>
+			</div>
+			<div class="fdep">
+			<div class="ptcolordiv3">
+			<table class="fdeprotate"> 
+				<tr> 
+					<td align="center"> FDEP/EPC</td>
+				</tr>
+			</table>
+			</div>
+								<form method="post" action=""></br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Received
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sent To Developer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br>
+				
+				<div class="noticeofintent">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notice of Intent
+					<input type="date" class="received"></input>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<input type="submit" class="requestsupervisorsignature" name="CreateDraft" value="Request Supervisor Signature1" onclick='dateLoad()'></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="date" class="signed" id="signeddate" value="03/05/2015"></input>
+				
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<input type="submit" class="emaildeveloper"  name="CreateDraft" value="Email to Developer1"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="date" class="senttodeveloper"></input>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+			    </div>		
+				
+				<div class="requestforapproval">
+				    Request For Approval
+					<input type="date" class="received"></input>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<input type="submit" class="requestsupervisorsignature" name="CreateDraft" value="Request Supervisor Signature2"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="date" class="signed"></input>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<input type="submit" class="emaildeveloper" name="CreateDraft" value="Email to Developer2"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="date"  class="senttodeveloper"></input>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				</div>
+				
+				</form>
+				
+			</div>
+			
+			<div class="fdot"> 
+			<div class="ptcolordiv4">
+			<table class="fdotrotate"> 
+				<tr> 
+					<td align="center">FDOT</td>
+				</tr>
+			</table>
+			</div>
+				<form method="post" action=""> </br>
+					Application package Received &nbsp;&nbsp;&nbsp;
+					<input type="date" class="applicationpackagereceived"></input> </br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Permit Submitted &nbsp;&nbsp;
+							<input type="date" class="permitsubmitted"></input>&nbsp;&nbsp;
+							<input type="submit" class="submitpermit" name="CreateDraft" value="Submit Permit"></input></br>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Permit Approved&nbsp;&nbsp;&nbsp;
+					<input type="date" class="permitapproved"></input>
+					 </br>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sent to Developer &nbsp;&nbsp;
+							<input type="date" class="senttodeveloper"></input>&nbsp;&nbsp;
+							<input type="submit" class="emailapproval" name="CreateDraft" value="E-mail approval"></input>
+				</form>
+			</div>
+			
+			<div class="hillsboroughcounty">
+				<div class="ptcolordiv4">
+				<table class="hillsrotate">
+					<tr>
+						<td align="center">Hillsborough County&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+				</div>
+				<form method="post" action=""></br>
+				<div class="permitsubmitted" >Permit Submitted &nbsp;&nbsp;
+					<input type="date"></input>
+					<input type="submit" value="Submit Permit" class="submitpermit" name="CreateDraft"></input>
+				</div></br>
+				
+				<div class="permitapproved">Permit Approved&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="date"></input>
+				</div>
+				</form>
+			</div>
+			</br>
+						<div class="saveandcontinue" align="center"><input type="submit" value="Save and Continue"></input></div>
+	</body>
+</html>	
+	
